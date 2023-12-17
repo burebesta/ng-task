@@ -77,6 +77,30 @@ main {
     td {
       padding: 10px 20px;
       white-space: nowrap;
+
+      a {
+        text-decoration: none;
+        position: relative;
+
+        &:hover {
+          text-decoration: underline;
+
+          &::after {
+            transform: rotate(5deg);
+            transition: 100ms;
+          }
+        }
+
+        &::after {
+          content: "";
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          margin-left: 10px;
+          background-image: url("/assets/svg/link.svg");
+          background-repeat: no-repeat;
+        }
+      }
     }
 
     tr {
