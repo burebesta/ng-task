@@ -1,9 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  OnInit,
-  inject,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { ApiService } from './core/services/api.service';
@@ -26,7 +21,7 @@ import { University } from './core/models/universities.model';
   styleUrl: './app.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   private api = inject(ApiService);
 
   public universities$ = this.api.getUniversities();
@@ -83,12 +78,6 @@ export class AppComponent implements OnInit {
         .toLowerCase()
         .includes(name.trim().toLowerCase());
       return countryMatch && nameMatch;
-    });
-  }
-
-  ngOnInit(): void {
-    this.api.getUniversities().subscribe((data) => {
-      console.log(data);
     });
   }
 }
