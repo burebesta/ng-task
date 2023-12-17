@@ -1,0 +1,86 @@
+main {
+  padding: 100px;
+  width: 1000px;
+
+  .controls-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  select,
+  input {
+    width: 280px;
+    height: 60px;
+    box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.1);
+    border: none;
+    border-radius: 8px;
+  }
+
+  input {
+    padding-left: 10px;
+    border: 1px solid transparent;
+
+    &::placeholder {
+      color: #b1b1b1;
+      font-size: 16px;
+    }
+
+    &:focus {
+      outline: none;
+      border: 1px solid #d0d5dd;
+    }
+  }
+
+  select {
+    padding-left: 10px;
+    border: 1px solid transparent;
+    font-size: 16px;
+
+    .placeholder {
+      color: #b1b1b1;
+    }
+
+    &:focus {
+      outline: none;
+      border: 1px solid #d0d5dd;
+    }
+  }
+
+  .reset-btn {
+    width: 130px;
+    height: 60px;
+    outline: none;
+    border: none;
+    border-radius: 8px;
+    background: rgba(0, 122, 255, 0.15);
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    color: #007aff;
+
+    &:hover {
+      background: rgba(0, 122, 255, 0.25);
+    }
+  }
+
+  table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    border-top: 1px solid #e5e9eb;
+
+    th {
+      text-align: left;
+    }
+
+    th,
+    td {
+      padding: 10px 20px;
+      white-space: nowrap;
+    }
+
+    tr {
+      border-bottom: 1px solid #e5e9eb;
+    }
+  }
+}
