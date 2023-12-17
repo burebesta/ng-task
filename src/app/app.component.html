@@ -1,21 +1,48 @@
 <main>
-  <select name="country" id="countryControl" [formControl]="countryControl">
-    @for (country of countries$ | async; track country) {
-    <option [value]="country">{{ country }}</option>
-    }
-  </select>
+  <div class="controls-container">
+    <select name="country" id="countryControl" [formControl]="countryControl">
+      <option class="placeholder" value="" disabled selected hidden>
+        Select Country
+      </option>
+      @for (country of countries$ | async; track country) {
+      <option [value]="country">{{ country }}</option>
+      }
+    </select>
+    <input
+      type="text"
+      placeholder="Search by name"
+      [formControl]="nameControl"
+    />
+    <button
+      class="reset-btn"
+      (click)="nameControl.reset(); countryControl.reset()"
+    >
+      Reset
+    </button>
+  </div>
 
-  {{ countryControl.value }}
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Country</th>
+        <th>State</th>
+        <th>URL</th>
+      </tr>
+    </thead>
 
-  <input type="text" [formControl]="nameControl" />
-
-  {{ nameControl.value }}
-
-  <ul>
-    @for (university of filteredUniversities$ | async; track university.name){
-    <li>{{ university.name }}</li>
-    }
-  </ul>
-
-  <button (click)="nameControl.reset(); countryControl.reset()">Reset</button>
+    <tbody>
+      @for (university of filteredUniversities$ | async; track university.name)
+      {
+      <tr>
+        <td>{{ university.name }}</td>
+        <td>{{ university.country }}</td>
+        <td>{{ university.state_province }}</td>
+        <td>
+          <a [href]="university.domains[0]">{{ university.domains[0] }}</a>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
 </main>
