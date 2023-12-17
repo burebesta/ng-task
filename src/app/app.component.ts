@@ -1,4 +1,9 @@
-import { Component, OnInit, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnInit,
+  inject,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { ApiService } from './core/services/api.service';
@@ -19,6 +24,7 @@ import { University } from './core/models/universities.model';
   imports: [CommonModule, RouterOutlet, FormsModule, ReactiveFormsModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent implements OnInit {
   private api = inject(ApiService);
@@ -51,7 +57,9 @@ export class AppComponent implements OnInit {
         country,
         name
       );
-      const sortedUniversities = filteredUniversities.sort();
+      const sortedUniversities = filteredUniversities.sort((a, b) => {
+        return a.name.localeCompare(b.name);
+      });
       return sortedUniversities.slice(0, 10);
     })
   );
