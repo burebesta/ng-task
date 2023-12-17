@@ -1,1 +1,19 @@
-<main>lesgo</main>
+<main>
+  <select name="country" id="countryControl" [formControl]="countryControl">
+    @for (country of countries$ | async; track country) {
+    <option [value]="country">{{ country }}</option>
+    }
+  </select>
+
+  {{ countryControl.value }}
+
+  <input type="text" [formControl]="nameControl" />
+
+  {{ nameControl.value }}
+
+  <ul>
+    @for (university of filteredUniversities$ | async; track university.name){
+    <li>{{ university.name }}</li>
+    }
+  </ul>
+</main>
